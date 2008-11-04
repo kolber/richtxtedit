@@ -1,0 +1,11 @@
+RichTxtEdit
+
+A test, exploring rich-text editing without the use of iframes
+
+Currently trying:
+* Allow type-insertion
+* Make bold (control-b)
+* Make italic (control-i)
+* Deletion (delete/backspace)
+* Key events limited to txtedit areas
+* Navigated using left key (←)

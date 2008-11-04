@@ -32,7 +32,7 @@ $(document).ready(function() {
 			} else if(unicode == 37) {
 				Range.moveCursorLeft();
 			} else if(unicode == 39) {
-				//Range.moveCursorRight();
+				Range.moveCursorRight();
 			} else if(unicode != 16) {
 				// switch to lowercase if necessary
 				if(!e.shiftKey) actualKey = actualKey.toLowerCase();

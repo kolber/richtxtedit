@@ -9,25 +9,37 @@
 	<body>
 		<h1>RichTxtEdit</h1>
 		<p>A test, exploring rich-text editing without the use of iframes</p>
-		<p>Currently trying:</p>
-		<ul>
-			<li>Allow type-insertion</li>
-			<li>Make bold (control-b)</li>
-			<li>Make italic (control-i)</li>
-			<li>Deletion (delete/backspace)</li>
-			<li>Key events limited to txtedit areas</li>
-			<li>Navigatable using left key (&larr;)</li>
-		</ul>
+		<div class="column">
+			<h2>Currently trying:</h2>
+			<ul>
+				<li>Allow type-insertion</li>
+				<li>Make bold (control-b)</li>
+				<li>Make italic (control-i)</li>
+				<li>Deletion (delete/backspace)</li>
+				<li>Key events limited to txtedit areas</li>
+				<li>Navigatable using left &amp; right keys (&larr; / &rarr;)</li>
+			</ul>
+		</div>
+		<div class="column">
+			<h2>Currently issues:</h2>
+			<ul>
+				<li>Type no longer selected after bolding/italicising</li>
+				<li>Does not handle reversing bold/italic states</li>
+				<li>A new textnode is created every time the cursor is inserted</li>
+				<li>Arrow navigation effected by above issue</li>
+			</ul>
+		</div>
+		
 		<hr>
 		<div class="txtedit">
 			<h1>Dolorum ipsum quia</h1>
-			<p><strong>Lorem ipsum dolor sit amet</strong>, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> 
-			<p>Duis aute irure dolor in reprehenderit in voluptate <em>velit esse cillum dolore</em> eu fugiat nulla pariatur. Excepteur sint occaecat <a href="http://www.flickrfolio.net">cupidatat non proident</a>, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> 
+			<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 		</div>
 		<div class="txtedit">
 			<h1>Sorrow for its own sake</h1>
-			<p><strong>But I must explain to you how all</strong> this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful.</p>
-				<p>Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes <em>laborious physical exercise</em>, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to <a href="http://www.flickrfolio.net">enjoy a pleasure that has no annoying consequences</a>, or one who avoids a pain that produces no resultant pleasure?</p>
+			<p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful.</p>
+				<p>Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?</p>
 		</div>
 		<script src="/docs/js/jquery-1.2.6.js" type="text/javascript"></script>
 		<script src="/docs/js/range.js" type="text/javascript"></script>

@@ -25,24 +25,22 @@ var Range = {
 	_getRangeObject: function() {
 		var selectionObject = this._getSelection();
 		if (selectionObject.getRangeAt)
-				return selectionObject.getRangeAt(0);
-			else { // Safari!
-				var range = document.createRange();
-				range.setStart(selectionObject.anchorNode,selectionObject.anchorOffset);
-				range.setEnd(selectionObject.focusNode,selectionObject.focusOffset);
-				return range;
-			}
+			return selectionObject.getRangeAt(0);
+		else { // Safari!
+			var range = document.createRange();
+			range.setStart(selectionObject.anchorNode,selectionObject.anchorOffset);
+			range.setEnd(selectionObject.focusNode,selectionObject.focusOffset);
+			return range;
+		}
 		
 	},
 	
-	_createNewSelection: function(selection, startOffset, endOffset) {
+	_createNewSelection: function(startOffset, endOffset) {
 		var newSelection = document.createRange();
-		console.debug("start: " + (selection.startOffset + startOffset));
-		console.debug("end: " + (selection.endOffset + endOffset));
 		// get selectionObject
 		var selectionObject = this._getSelection();
-		newSelection.setStart(selection.startContainer, selection.startOffset + startOffset);
-		newSelection.setEnd(selection.startContainer, selection.endOffset + endOffset);
+		newSelection.setStart(document.getElementById("cursor").previousSibling, document.getElementById("cursor").previousSibling.length + startOffset);
+		newSelection.setEnd(document.getElementById("cursor").previousSibling, document.getElementById("cursor").previousSibling.length + endOffset);
 		
 		return newSelection;
 	},
@@ -84,13 +82,13 @@ var Range = {
 	
 	backwardsDelete: function() {
 		var selection = this._getRangeObject();
-		// create new selection directly behind the current selection
-		var newSelection = this._createNewSelection(selection, -1, 0);
-		
-		if(selection.startOffset == selection.endOffset) {
+		if(selection.collapsed) {
+			// create new selection directly behind the current selection
+			var newSelection = this._createNewSelection(-1, 0);
 			newSelection.deleteContents();
-			selection.setStart(newSelection.startContainer, newSelection.startOffset - 1);
-			selection.setStart(newSelection.startContainer, newSelection.endOffset);
+			
+			selection.setStart(document.getElementById("cursor").previousSibling, document.getElementById("cursor").previousSibling.length);
+			selection.setStart(document.getElementById("cursor").previousSibling, document.getElementById("cursor").previousSibling.length);
 		} else {
 			selection.deleteContents();
 			this.insertCursor(newSelection);
@@ -110,13 +108,17 @@ var Range = {
 	moveCursorLeft: function() {
 		var selection = this._getRangeObject();
 		// create new selection directly behind the current selection
-		var newSelection = this._createNewSelection(selection, -1, -1);
+		var newSelection = this._createNewSelection(-1, -1);
 		
 		this.insertCursor(newSelection);
 	},
 	
 	moveCursorRight: function() {
 		var selection = this._getRangeObject();
+		
+		selection.setStart(document.getElementById("cursor").nextSibling, 1);
+		selection.setEnd(document.getElementById("cursor").nextSibling, 1);
 		this.insertCursor(selection);
+		
 	}
 }

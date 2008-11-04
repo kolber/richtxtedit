@@ -25,8 +25,8 @@ $(document).ready(function() {
 			console.debug("actual key: " + actualKey);
 			console.debug("unicode: " + unicode);
 			if(e.ctrlKey) {
-				if (actualKey == "B") Range.wrapStrong();
-				if (actualKey == "I") Range.wrapEm();
+				if (actualKey == "b") Range.wrapStrong();
+				if (actualKey == "i") Range.wrapEm();
 			} else if(unicode == 8) {
 				Range.backwardsDelete();
 			} else if(unicode == 37) {

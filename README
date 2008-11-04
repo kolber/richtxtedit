@@ -8,4 +8,4 @@ Currently trying:
 * Make italic (control-i)
 * Deletion (delete/backspace)
 * Key events limited to txtedit areas
-* Navigated using left key (←)
+* Navigatable using left key (←)

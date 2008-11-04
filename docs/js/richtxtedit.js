@@ -19,21 +19,31 @@ $(document).ready(function() {
 	
 	$(document).keypress(function(e) {
 		if(Range.currentFocus) {
-			e.preventDefault();
 			var unicode = e.charCode ? e.charCode : e.keyCode;
 			var actualKey = String.fromCharCode(unicode);
-			console.debug("actual key: " + actualKey);
-			console.debug("unicode: " + unicode);
+			//console.debug("actual key: " + actualKey);
+			//console.debug("unicode: " + unicode);
+			
 			if(e.ctrlKey) {
-				if (actualKey == "b") Range.wrapStrong();
-				if (actualKey == "i") Range.wrapEm();
+				if (actualKey == "b") {
+					e.preventDefault();
+					Range.wrapStrong();
+				}
+				if (actualKey == "i") {
+					e.preventDefault();
+					Range.wrapEm();
+				}
 			} else if(unicode == 8) {
+				e.preventDefault();
 				Range.backwardsDelete();
 			} else if(unicode == 37) {
+				e.preventDefault();
 				Range.moveCursorLeft();
 			} else if(unicode == 39) {
+				e.preventDefault();
 				Range.moveCursorRight();
-			} else if(unicode != 16) {
+			} else if(unicode != 16 && !e.metaKey) {
+				e.preventDefault();
 				// switch to lowercase if necessary
 				if(!e.shiftKey) actualKey = actualKey.toLowerCase();
 				Range.insertBefore(actualKey);

@@ -1,6 +1,7 @@
 RichTxtEdit
 
 A test, exploring rich-text editing without the use of iframes
+Firefox only at this stage.
 
 Currently trying:
 * Allow type-insertion

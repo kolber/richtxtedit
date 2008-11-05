@@ -5,6 +5,16 @@ $(document).ready(function() {
 		a.before("<span class='anchor'>" + a.text() + "</span>").remove();
 	});
 	
+	/*$("div.txtedit").each(function() {
+		$(this).after("<textarea class='txtedit-textarea'>" + $(this).text() + "</textarea>").next("textarea.txtedit-textarea").css({
+			width: $(this).width() + "px",
+			height: $(this).height() + "px",
+			position: "absolute",
+			top: $(this).offset().top + "px",
+			left: $(this).offset().left + "px"
+		});
+	});*/
+	
 	$("div.txtedit").mouseup(function(e) {
 		$("img#cursor").remove();
 		Range.focusArea(this);

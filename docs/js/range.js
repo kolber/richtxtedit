@@ -67,6 +67,8 @@ var Range = {
 		var currentCursor = document.getElementById("cursor");
 		if(currentCursor) currentCursor.parentNode.removeChild(currentCursor);
 		var selection = (arguments[0]) ? arguments[0] : this._getRangeObject();
+		console.debug(selection);
+		console.debug(selection.startContainer);
 		var cursor = document.createElement("img");
 		cursor.setAttribute("src", this.cursorSrc);
 		cursor.setAttribute("id", "cursor");

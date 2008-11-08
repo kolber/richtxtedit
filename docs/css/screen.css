@@ -13,12 +13,16 @@ p {
 }
 
 h1 {
+	display: inline;
+	border-bottom: 	1px solid #cee;
 	margin: 0px 0px 8px 0px;
 }
 
 h2 {
+	display: inline;
+	border-bottom: 	1px solid #cee;
 	font-size: 1.3em;
-	margin: 8px 0px 4px 0px;
+	margin: 0px 0px 0px 0px;
 }
 
 strong {
@@ -37,7 +41,7 @@ span.anchor {
 }
 
 ul {
-	margin: 0px 0px 10px;
+	margin: 10px 0px 10px;
 	padding: 0px 0px 0px 15px;
 }
 
@@ -59,13 +63,24 @@ a:hover {
 div.column {
 	width: 440px;
 	float: left;
-	margin: 0px 60px 0px 0px;
+	margin: 10px 60px 0px 0px;
 }
 
 
 div.txtedit {
 	width: 400px;
-	border: 1px solid #ccc;
+	border: 2px solid #ccc;
+	padding: 20px;
+	float: left;
+	margin: 20px 60px 0px 0px;
+}
+
+textarea.txtedit-textarea {
+	opacity: 0;
+	font-family: inherit;
+	font-size: inherit;
+	width: 400px;
+	border: 2px solid #ccc;
 	padding: 20px;
 	float: left;
 	margin: 20px 60px 0px 0px;

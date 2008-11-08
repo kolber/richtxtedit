@@ -47,10 +47,12 @@ $(document).ready(function() {
 				Range.backwardsDelete();
 			} else if(unicode == 37) {
 				e.preventDefault();
-				Range.moveCursorLeft();
+				if(!e.shiftKey) Range.moveCursorLeft();
+				else Range.expandSelectLeft()
 			} else if(unicode == 39) {
 				e.preventDefault();
-				Range.moveCursorRight();
+				if(!e.shiftKey) Range.moveCursorRight();
+				else Range.expandSelectRight();
 			} else if(unicode != 16 && !e.metaKey) {
 				e.preventDefault();
 				// switch to lowercase if necessary

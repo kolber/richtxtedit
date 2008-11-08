@@ -175,5 +175,33 @@ var Range = {
 			cursor.setAttribute("id", "cursor");
 			newSelection.insertNode(cursor);
 		}
+	},
+	expandSelectLeft: function() {
+		var currentCursor = document.getElementById("cursor");
+		if(currentCursor) {
+			var parent = currentCursor.parentNode;
+			parent.removeChild(currentCursor);
+			parent.normalize();
+		}
+		
+		var selection = this._getRangeObject();
+		
+		// move selection
+		var selectionObject = this._getSelection();
+		selectionObject.extend(selection.startContainer, selection.startOffset - 1);
+	},
+	expandSelectRight: function() {
+		var currentCursor = document.getElementById("cursor");
+		if(currentCursor) {
+			var parent = currentCursor.parentNode;
+			parent.removeChild(currentCursor);
+			parent.normalize();
+		}
+		
+		var selection = this._getRangeObject();
+		
+		// move selection
+		var selectionObject = this._getSelection();
+		selectionObject.extend(selection.startContainer, selection.endOffset + 1);
 	}
 }

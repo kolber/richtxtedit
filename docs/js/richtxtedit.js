@@ -22,8 +22,8 @@ $(document).ready(function() {
 			e.preventDefault();
 			var unicode = e.charCode ? e.charCode : e.keyCode;
 			var actualKey = String.fromCharCode(unicode);
-			console.debug("actual key: " + actualKey);
-			console.debug("unicode: " + unicode);
+			// console.debug("actual key: " + actualKey);
+			// console.debug("unicode: " + unicode);
 			if(e.ctrlKey) {
 				if (actualKey == "b") Range.wrapStrong();
 				if (actualKey == "i") Range.wrapEm();

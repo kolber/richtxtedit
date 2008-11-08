@@ -67,8 +67,6 @@ var Range = {
 		var currentCursor = document.getElementById("cursor");
 		if(currentCursor) currentCursor.parentNode.removeChild(currentCursor);
 		var selection = (arguments[0]) ? arguments[0] : this._getRangeObject();
-		console.debug(selection);
-		console.debug(selection.startContainer);
 		var cursor = document.createElement("img");
 		cursor.setAttribute("src", this.cursorSrc);
 		cursor.setAttribute("id", "cursor");
@@ -76,10 +74,35 @@ var Range = {
 	},
 	
 	insertBefore: function(str) {
+		var currentCursor = document.getElementById("cursor");
+		// remove cursor and normalize
+		if(currentCursor) {
+			var parent = currentCursor.parentNode;
+			parent.removeChild(currentCursor);
+			parent.normalize();
+		}
+		
+		// insert new textnode
 		var selection = this._getRangeObject();
 		var str = document.createTextNode(str);
 		selection.insertNode(str);
-		selection.setStartAfter(str);
+		str.parentNode.normalize();
+		
+		// create new selection
+		var newSelection = document.createRange();
+		newSelection.setStart(selection.startContainer, selection.startOffset + 1);
+		newSelection.setEnd(selection.startContainer, selection.endOffset + 1);
+		
+		// move selection
+		var selectionObject = this._getSelection();
+		selectionObject.extend(selection.startContainer, selection.endOffset + 1);
+		selectionObject.collapseToEnd();
+		
+		// insert cursor to new position
+		var cursor = document.createElement("img");
+		cursor.setAttribute("src", this.cursorSrc);
+		cursor.setAttribute("id", "cursor");
+		newSelection.insertNode(cursor);
 	},
 	
 	backwardsDelete: function() {
@@ -109,34 +132,48 @@ var Range = {
 	
 	moveCursorLeft: function() {
 		var currentCursor = document.getElementById("cursor");
-		if(currentCursor) {
-			var parent = currentCursor.parentNode;
-			parent.removeChild(currentCursor);
-			parent.normalize();
+		if (currentCursor && currentCursor.previousSibling.length > 0) {
+			if(currentCursor) {
+				var parent = currentCursor.parentNode;
+				parent.removeChild(currentCursor);
+				parent.normalize();
+			}
+			//var selection = this._getRangeObject();
+			var newSelection = this._createNewSelection(-1, -1);
+			var cursor = document.createElement("img");
+			cursor.setAttribute("src", this.cursorSrc);
+			cursor.setAttribute("id", "cursor");
+			newSelection.insertNode(cursor);
 		}
-		//var selection = this._getRangeObject();
-		var newSelection = this._createNewSelection(-1, -1);
-		var cursor = document.createElement("img");
-		cursor.setAttribute("src", this.cursorSrc);
-		cursor.setAttribute("id", "cursor");
-		newSelection.insertNode(cursor);
 	},
 	
 	moveCursorRight: function() {
 		var currentCursor = document.getElementById("cursor");
-		if(currentCursor) {
-			var parent = currentCursor.parentNode;
-			parent.removeChild(currentCursor);
-			parent.normalize();
+		// if have not reached the end
+		if (currentCursor && currentCursor.nextSibling.length > 0) {
+			if(currentCursor) {
+				var parent = currentCursor.parentNode;
+				parent.removeChild(currentCursor);
+				parent.normalize();
+			}
+
+			var selection = this._getRangeObject();
+			
+			// create new selection
+			var newSelection = document.createRange();
+			newSelection.setStart(selection.startContainer, selection.startOffset + 1);
+			newSelection.setEnd(selection.startContainer, selection.endOffset + 1);
+
+			// move selection
+			var selectionObject = this._getSelection();
+			selectionObject.extend(selection.startContainer, selection.endOffset + 1);
+			selectionObject.collapseToEnd();
+
+			// insert cursor to new position
+			var cursor = document.createElement("img");
+			cursor.setAttribute("src", this.cursorSrc);
+			cursor.setAttribute("id", "cursor");
+			newSelection.insertNode(cursor);
 		}
-		var selection = this._getRangeObject();
-		var newSelection = this._createNewSelection(1, 1);
-		var cursor = document.createElement("img");
-		cursor.setAttribute("src", this.cursorSrc);
-		cursor.setAttribute("id", "cursor");
-		newSelection.insertNode(cursor);
-		var selectionObject = this._getSelection();
-		selectionObject.extend(document.getElementById("cursor").nextSibling, 1);
-		selectionObject.collapseToEnd();
 	}
 }

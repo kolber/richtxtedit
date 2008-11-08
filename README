@@ -7,6 +7,7 @@ Currently trying:
 * Allow type-insertion
 * Make bold (control-b)
 * Make italic (control-i)
-* Deletion (delete/backspace)
+* Backwards deletion (delete/backspace)
+* Delete selection (delete/backspace)
 * Key events limited to txtedit areas
 * Navigatable using left & right keys (← / →)

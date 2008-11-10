@@ -70,6 +70,8 @@ var Range = {
 		var cursor = document.createElement("img");
 		cursor.setAttribute("src", this.cursorSrc);
 		cursor.setAttribute("id", "cursor");
+		cursor.setAttribute("height", $(selection.startContainer.parentNode).css("font-size"));
+		cursor.setAttribute("width", "1px");
 		selection.insertNode(cursor);
 	},
 	
@@ -102,6 +104,8 @@ var Range = {
 		var cursor = document.createElement("img");
 		cursor.setAttribute("src", this.cursorSrc);
 		cursor.setAttribute("id", "cursor");
+		cursor.setAttribute("height", $(selection.startContainer.parentNode).css("font-size"));
+		cursor.setAttribute("width", "1px");
 		newSelection.insertNode(cursor);
 	},
 	
@@ -143,6 +147,8 @@ var Range = {
 			var cursor = document.createElement("img");
 			cursor.setAttribute("src", this.cursorSrc);
 			cursor.setAttribute("id", "cursor");
+			cursor.setAttribute("height", $(selection.startContainer.parentNode).css("font-size"));
+			cursor.setAttribute("width", "1px");
 			newSelection.insertNode(cursor);
 		}
 	},
@@ -173,6 +179,8 @@ var Range = {
 			var cursor = document.createElement("img");
 			cursor.setAttribute("src", this.cursorSrc);
 			cursor.setAttribute("id", "cursor");
+			cursor.setAttribute("height", $(selection.startContainer.parentNode).css("font-size"));
+			cursor.setAttribute("width", "1px");
 			newSelection.insertNode(cursor);
 		}
 	}

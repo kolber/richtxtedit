@@ -142,8 +142,13 @@ var Range = {
 				parent.removeChild(currentCursor);
 				parent.normalize();
 			}
-			//var selection = this._getRangeObject();
+			
+			var selection = this._getRangeObject();
+			
+			// create new selection
 			var newSelection = this._createNewSelection(-1, -1);
+			
+			// insert cursor
 			var cursor = document.createElement("img");
 			cursor.setAttribute("src", this.cursorSrc);
 			cursor.setAttribute("id", "cursor");
